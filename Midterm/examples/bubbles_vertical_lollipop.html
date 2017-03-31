@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="css/bubble_chart.css">
+</head>
+
+<body>
+<div class="intro short_content" id="introduction">
+<!-- PRETTY STUFF STARTS HERE -->
+    <div>
+     
+      <span id="name">Danielle Sobel</span> <br> 
+      <span id="title">Football Bubble Viz</span><br>
+       <img src="penn-state.png">
+
+    </div>
+  </div> 
+
+<div class="about short_content" id="about">
+    <p> Concept: I want to create a way to show football data that users can engage with without it looking like a database. <br><br><br>Data: http://www.sports-reference.com/cfb/schools/penn-state/scoring.html<br><br><br>Tools: D3.js and Dimple.js</p> 
+  </div> 
+
+
+
+
+<!-- BUBBLE D3 STARTS HERE -->
+<div class="container">
+   
+
+    <div id="vis"></div>
+     <h1>Coach Stats: <br>These are the people who coached in Penn State history</h1>
+  </div>
+
+
+<script src="//d3js.org/d3.v4.min.js"></script>
+  <script src="src/tooltip.js"></script>
+  <script src="src/bubble_chart.js"></script>
+
+
+<div class="about short_content" id="about">
+    <p> "Believe deep down in your heart that you're destined for great things".<br> - Joe Paterno </p> 
+  </div> 
+<!-- DIMPLE STARTS HERE -->
+
+
+
+
+</body>
+
+ 
+<div id="chartContainer">
+  <script src="/lib/d3.v4.3.0.js"></script>
+  <script src="/dist/dimple.v2.3.0.js"></script>
+  <script type="text/javascript">
+  // <link href="css/style.css" rel="stylesheet">
+
+
+    var svg = dimple.newSvg("#chartContainer", 650, 500);
+      d3.tsv("/data/example_data.tsv", function (data) {
+        data = dimple.filterData(data, "Date", ["01/07/2012", "01/08/2012"]);
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(60, 30, 500, 330)
+        var x = myChart.addCategoryAxis("x", "Year");
+        x.addOrderRule("Date");
+        myChart.addMeasureAxis("y", "Points");
+        myChart.addMeasureAxis("z", "Points");
+        myChart.addSeries("Players", dimple.plot.bubble);
+        // myChart.addLegend(140, 10, 360, 20, "right");
+        myChart.draw();
+      });
+  </script>
+  <h1>Offensive Stats 2000-2016:</h1>
+
+ 
+</div>
+
+
+
+
+</html>
